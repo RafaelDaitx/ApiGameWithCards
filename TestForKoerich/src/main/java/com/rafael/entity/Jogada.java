@@ -1,4 +1,4 @@
-package com.rafael.model;
+package com.rafael.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
