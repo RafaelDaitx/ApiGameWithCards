@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: testForKoerich
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cardstable?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8080
