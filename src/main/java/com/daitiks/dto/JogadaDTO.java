@@ -1,4 +1,4 @@
-package com.rafael.dto;
+package com.daitiks.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
