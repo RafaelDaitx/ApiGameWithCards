@@ -17,13 +17,12 @@ public class CardsController {
     @Autowired
     private CardService cardService;
 
-    @Autowired
-    private CardApiClient cardApiClient;
+
 
     @GetMapping
     public List<String> realizarJogada(){
-        var response =  cardApiClient.criaDeckCartas();
-        var a = cardService.realizarJogada();
-        return a;
+
+         cardService.realizarJogada();
+        return null;
     }
 }
