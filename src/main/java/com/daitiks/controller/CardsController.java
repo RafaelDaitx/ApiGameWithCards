@@ -17,8 +17,6 @@ public class CardsController {
     @Autowired
     private CardService cardService;
 
-
-
     @GetMapping
     public List<String> realizarJogada(){
 

@@ -1,14 +1,14 @@
 package com.daitiks.client.response;
 
+import com.daitiks.model.Cartas;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class CartaDtoApi implements Serializable {
-
     private boolean success;
     private String deck_id;
-    private List<CardApi> cards;
-    private int remaining;
+    private List<Cartas> cards;
 
     // Getters and Setters
 
@@ -28,21 +28,12 @@ public class CartaDtoApi implements Serializable {
         this.deck_id = deck_id;
     }
 
-    public List<CardApi> getCards() {
+    public List<Cartas> getCards() {
         return cards;
     }
 
-    public void setCards(List<CardApi> cards) {
+    public void setCards(List<Cartas> cards) {
         this.cards = cards;
     }
-
-    public int getRemaining() {
-        return remaining;
-    }
-
-    public void setRemaining(int remaining) {
-        this.remaining = remaining;
-    }
-
 
 }
