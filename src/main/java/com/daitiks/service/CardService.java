@@ -48,6 +48,7 @@ public class CardService {
     }
 
     public List<VencedoresDTO> realizarJogada() {
+        logger.info("Realiando jogada!");
         var criaDeckCartas = cardApiClient.criaDeckCartas();
 
         List<VencedoresDTO> listaVencedores =  distribuirCartas(criaDeckCartas);
@@ -71,11 +72,12 @@ public class CardService {
     }
 
     public List<JogadoresDTO> carregarJogadores() {
+        logger.info("Carregando jogadores!");
         return JogadoresMapper.INSTANCE.convertFromJogadoresToDto(jogadoresRepository.findAll());
     }
 
     private List<VencedoresDTO> distribuirCartas(CartaDtoApi criaDeckCartas) {
-
+        logger.info("Destribuindo cartas!");
         List<Cartas> cartas = criaDeckCartas.getCards();
         List<JogadoresDTO> jogadoresCarregados = carregarJogadores();
 
@@ -85,15 +87,16 @@ public class CardService {
     }
 
     public List<JogadaDTO> distribuiCartas(List<JogadoresDTO> jogadoresDTO, List<Cartas> cartas) {
-
+        logger.info("Destribuindo cartas entre jogadores!");
         int totalDeCartasParaJogador = 5;
-        int cartaAtual = 0;
+        int numeroTotalCartasDistribuidas = 0;
+
         List<JogadaDTO> jogada = new ArrayList<>();
 
         try {
             for (JogadoresDTO jogador : jogadoresDTO) {
-                List<Cartas> cartasParaJogador = obterCartasParaJogador(cartas, cartaAtual + totalDeCartasParaJogador);
-                cartaAtual += 5;
+                List<Cartas> cartasParaJogador = obterCartasParaJogador(cartas, numeroTotalCartasDistribuidas + totalDeCartasParaJogador);
+                numeroTotalCartasDistribuidas += 5;
                 jogada.add(criarJogada(jogador, cartasParaJogador));
             }
         } catch (RuntimeException e){
@@ -104,10 +107,12 @@ public class CardService {
     }
 
     private JogadaDTO criarJogada(JogadoresDTO jogador, List<Cartas> cartasParaJogador) {
+        logger.info("Criando jogada!");
         return new JogadaDTO(jogador.getNomeJogador(), cartasParaJogador);
     }
 
     private List<Cartas> obterCartasParaJogador(List<Cartas> cartas, int cartaAtual) {
+        logger.info("Obtendo cartas para jogador!");
         return cartas.subList(cartaAtual, cartaAtual + 5);
     }
 
