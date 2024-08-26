@@ -1,7 +1,7 @@
 package com.daitiks.controller;
 
-import com.daitiks.client.CardApiClient;
 
+import com.daitiks.dto.VencedoresDTO;
 import com.daitiks.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +18,8 @@ public class CardsController {
     private CardService cardService;
 
     @GetMapping
-    public List<String> realizarJogada(){
+    public List<VencedoresDTO> realizarJogada(){
 
-         cardService.realizarJogada();
-        return null;
+         return cardService.realizarJogada();
     }
 }

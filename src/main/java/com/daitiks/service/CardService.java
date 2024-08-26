@@ -4,6 +4,7 @@ import com.daitiks.client.CardApiClient;
 import com.daitiks.client.response.CartaDtoApi;
 import com.daitiks.dto.JogadaDTO;
 import com.daitiks.dto.JogadoresDTO;
+import com.daitiks.dto.VencedoresDTO;
 import com.daitiks.mapper.JogadoresMapper;
 import com.daitiks.model.Cartas;
 import com.daitiks.repository.JogadoresRepository;
@@ -23,17 +24,27 @@ public class CardService {
     @Autowired
     private CardApiClient cardApiClient;
 
+    private ResultadoService resultadoService;
+
+    public CardService(
+            CardApiClient cardApiClient,
+            ResultadoService resultadoService,
+            JogadoresRepository jogadoresRepository) {
+        this.cardApiClient = cardApiClient;
+        this.resultadoService = resultadoService;
+        this.jogadoresRepository = jogadoresRepository;
+    }
+
     @Autowired
     private JogadoresRepository jogadoresRepository;
 
-    public List<String> realizarJogada(){
+    public List<VencedoresDTO> realizarJogada(){
         var criaDeckCartas =  cardApiClient.criaDeckCartas();
 
-        distribuirCartas(criaDeckCartas);
-        return null;
+        return distribuirCartas(criaDeckCartas);
     }
 
-    private void distribuirCartas(CartaDtoApi criaDeckCartas) {
+    private List<VencedoresDTO> distribuirCartas(CartaDtoApi criaDeckCartas) {
 
         List<Cartas> cards = criaDeckCartas.getCards();
         List<JogadoresDTO> jogadoresCarregados = JogadoresMapper.INSTANCE.convertFromJogadoresToDto(jogadoresRepository.findAll());
@@ -57,7 +68,13 @@ public class CardService {
             }
             System.out.println("maoe");
         }
+       return resultadoService.vencedorDaRodada(jogada);
 
+//        if (vencedor.size() == 1) {
+//            System.out.println("Vencedor é " + vencedor.get(0) + " com " + maiorSoma + " pontos");
+//        } else {
+//            System.out.println("Empate! Vencedores são: " + String.join(", ", vencedores) + " com " + maiorSoma + " pontos");
+//        }
 
 //        List<Cartas> cartasNaMao = jogador1.getCartasNaMao();
 //        StringBuilder sb = new StringBuilder();
