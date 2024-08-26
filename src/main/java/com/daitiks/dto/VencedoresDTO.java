@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 public class VencedoresDTO {
 
+    private Long id;
     private String nomeVencedor;
     private List<Cartas> cartasDoJogador;
     private int somaCartas;

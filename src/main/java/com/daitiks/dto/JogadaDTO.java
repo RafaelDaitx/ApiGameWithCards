@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 public class JogadaDTO {
-
     private String nomeJogador;
     private List<Cartas> cartasNaMao;
 }

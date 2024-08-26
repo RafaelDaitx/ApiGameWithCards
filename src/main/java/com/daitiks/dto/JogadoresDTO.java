@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class JogadoresDTO {
-
     private Long id;
     private String nomeJogador;
 }

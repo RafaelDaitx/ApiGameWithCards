@@ -1,9 +1,7 @@
 package com.daitiks.service;
 
 import com.daitiks.dto.JogadaDTO;
-import com.daitiks.dto.JogadoresDTO;
 import com.daitiks.dto.VencedoresDTO;
-import com.daitiks.model.Cartas;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
