@@ -51,7 +51,7 @@ public class CardService {
         logger.info("Realiando jogada!");
         var criaDeckCartas = cardApiClient.criaDeckCartas();
 
-        List<VencedoresDTO> listaVencedores =  distribuirCartas(criaDeckCartas);
+        List<VencedoresDTO> listaVencedores = distribuirCartas(criaDeckCartas);
 
         try{
             for(VencedoresDTO vencedorDaRodada : listaVencedores){
@@ -76,17 +76,17 @@ public class CardService {
         return JogadoresMapper.INSTANCE.convertFromJogadoresToDto(jogadoresRepository.findAll());
     }
 
-    private List<VencedoresDTO> distribuirCartas(CartaDtoApi criaDeckCartas) {
-        logger.info("Destribuindo cartas!");
+    public List<VencedoresDTO> distribuirCartas(CartaDtoApi criaDeckCartas) {
+        logger.info("Distribuindo cartas!");
         List<Cartas> cartas = criaDeckCartas.getCards();
         List<JogadoresDTO> jogadoresCarregados = carregarJogadores();
 
-        List<JogadaDTO> jogadas = distribuiCartas(jogadoresCarregados, cartas);
+        List<JogadaDTO> jogadas = definindoJogada(jogadoresCarregados, cartas);
 
         return resultadoService.vencedorDaRodada(jogadas);
     }
 
-    public List<JogadaDTO> distribuiCartas(List<JogadoresDTO> jogadoresDTO, List<Cartas> cartas) {
+    public List<JogadaDTO> definindoJogada(List<JogadoresDTO> jogadoresDTO, List<Cartas> cartas) {
         logger.info("Destribuindo cartas entre jogadores!");
         int totalDeCartasParaJogador = 5;
         int numeroTotalCartasDistribuidas = 0;

@@ -50,7 +50,7 @@ public class ResultadoService {
 
     }
 
-    private int calcularSomaDasCartas(JogadaDTO jogadaDTO){
+    public int calcularSomaDasCartas(JogadaDTO jogadaDTO){
         return jogadaDTO.getCartasNaMao().stream()
                 .mapToInt(carta -> valorDasCartas.get(carta.getValue()))
                 .sum();
