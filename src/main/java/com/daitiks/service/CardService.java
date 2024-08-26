@@ -5,6 +5,7 @@ import com.daitiks.client.response.CartaDtoApi;
 import com.daitiks.dto.JogadaDTO;
 import com.daitiks.dto.JogadoresDTO;
 import com.daitiks.dto.VencedoresDTO;
+import com.daitiks.entity.Jogadores;
 import com.daitiks.mapper.JogadoresMapper;
 import com.daitiks.model.Cartas;
 import com.daitiks.repository.JogadoresRepository;
@@ -38,55 +39,49 @@ public class CardService {
     @Autowired
     private JogadoresRepository jogadoresRepository;
 
-    public List<VencedoresDTO> realizarJogada(){
-        var criaDeckCartas =  cardApiClient.criaDeckCartas();
+    public List<VencedoresDTO> realizarJogada() {
+        var criaDeckCartas = cardApiClient.criaDeckCartas();
 
         return distribuirCartas(criaDeckCartas);
     }
 
+    public List<JogadoresDTO> carregarJogadores() {
+        return JogadoresMapper.INSTANCE.convertFromJogadoresToDto(jogadoresRepository.findAll());
+    }
+
     private List<VencedoresDTO> distribuirCartas(CartaDtoApi criaDeckCartas) {
 
-        List<Cartas> cards = criaDeckCartas.getCards();
-        List<JogadoresDTO> jogadoresCarregados = JogadoresMapper.INSTANCE.convertFromJogadoresToDto(jogadoresRepository.findAll());
+        List<Cartas> cartas = criaDeckCartas.getCards();
+        List<JogadoresDTO> jogadoresCarregados = carregarJogadores();
 
-        int numCartasPorJogador = 5;
-        int indexCartaAtual = 0;
-        List<JogadaDTO> jogada = new ArrayList<>();
+        List<JogadaDTO> jogadas = distribuiCartas(jogadoresCarregados, cartas);
 
-        for (JogadoresDTO jogador : jogadoresCarregados) {
-
-            // Verifica se há cartas suficientes para todos os jogadores
-            if (indexCartaAtual + numCartasPorJogador <= cards.size()) {
-                List<Cartas> cartasParaJogador = cards.subList(indexCartaAtual, indexCartaAtual + numCartasPorJogador);
-                JogadaDTO jogadaDTO = new JogadaDTO(jogador.getNomeJogador(), cartasParaJogador);
-                jogada.add(jogadaDTO);
-                indexCartaAtual += numCartasPorJogador;
-            } else {
-                // Lida com o caso onde não há cartas suficientes
-                System.out.println("Cartas insuficientes para todos os jogadores!");
-                break;
-            }
-            System.out.println("maoe");
-        }
-       return resultadoService.vencedorDaRodada(jogada);
-
-//        if (vencedor.size() == 1) {
-//            System.out.println("Vencedor é " + vencedor.get(0) + " com " + maiorSoma + " pontos");
-//        } else {
-//            System.out.println("Empate! Vencedores são: " + String.join(", ", vencedores) + " com " + maiorSoma + " pontos");
-//        }
-
-//        List<Cartas> cartasNaMao = jogador1.getCartasNaMao();
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(jogador1.getNome()).append(" = [");
-//        for (int i = 0; i < cartasNaMao.size(); i++) {
-//            sb.append(cartasNaMao.get(i).getValue());
-//            if (i < cartasNaMao.size() - 1) {
-//                sb.append(",");
-//            }
-//        }
-//        sb.append("]");
-
+        return resultadoService.vencedorDaRodada(jogadas);
 
     }
+
+    public List<JogadaDTO> distribuiCartas(List<JogadoresDTO> jogadoresDTO, List<Cartas> cartas) {
+
+        int totalDeCartasParaJogador = 5;
+        int cartaAtual = 0;
+        List<JogadaDTO> jogada = new ArrayList<>();
+
+        for (JogadoresDTO jogador : jogadoresDTO) {
+            List<Cartas> cartasParaJogador = obterCartasParaJogador(cartas, cartaAtual + totalDeCartasParaJogador);
+            cartaAtual += 5;
+            jogada.add(criarJogada(jogador, cartasParaJogador));
+        }
+
+        return jogada;
+    }
+
+
+    private JogadaDTO criarJogada(JogadoresDTO jogador, List<Cartas> cartasParaJogador) {
+        return new JogadaDTO(jogador.getNomeJogador(), cartasParaJogador);
+    }
+
+    private List<Cartas> obterCartasParaJogador(List<Cartas> cartas, int cartaAtual) {
+        return cartas.subList(cartaAtual, cartaAtual + 5);
+    }
+
 }
