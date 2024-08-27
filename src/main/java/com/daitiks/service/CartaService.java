@@ -15,14 +15,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CardService {
+public class CartaService {
 
-    private final Logger logger = LoggerFactory.getLogger(CardService.class);
+    private final Logger logger = LoggerFactory.getLogger(CartaService.class);
 
     @Autowired
     private CardApiClient cardApiClient;
@@ -36,7 +37,7 @@ public class CardService {
     @Autowired
     private VencedoresRepository vencedoresRepository;
 
-    public CardService(
+    public CartaService(
             CardApiClient cardApiClient,
             ResultadoService resultadoService,
             VencedoresRepository vencedoresRepository,
@@ -48,27 +49,16 @@ public class CardService {
     }
 
     public List<VencedoresDTO> realizarJogada() {
-        logger.info("Realiando jogada!");
-        var criaDeckCartas = cardApiClient.criaDeckCartas();
+        logger.info("Realizando jogada!");
 
-        List<VencedoresDTO> listaVencedores = distribuirCartas(criaDeckCartas);
+        var deck = cardApiClient.criaDeckCartas();
+        List<VencedoresDTO> vencedores = distribuirCartas(deck);
 
-        try{
-            for(VencedoresDTO vencedorDaRodada : listaVencedores){
-                String cartas = vencedorDaRodada.getCartasDoJogador().stream()
-                        .map(Cartas::getValue)
-                        .collect(Collectors.joining(","));
-                Vencedores vencedorConvertido = new Vencedores(vencedorDaRodada.getNomeVencedor(), vencedorDaRodada.getSomaCartas(), cartas);
-
-                var vencedorSalvo = vencedoresRepository.save(vencedorConvertido);
-
-                vencedorDaRodada.setId(vencedorSalvo.getId());
-            }
-        } catch (RuntimeException e){
-            throw e;
+        for(VencedoresDTO e: vencedores) {
+            salvarVencedor(e);
         }
 
-        return listaVencedores;
+        return vencedores;
     }
 
     public List<JogadoresDTO> carregarJogadores() {
@@ -116,4 +106,14 @@ public class CardService {
         return cartas.subList(cartaAtual, cartaAtual + 5);
     }
 
+    public void salvarVencedor(VencedoresDTO vencedorDTO) {
+        String cartas = vencedorDTO.getCartasDoJogador().stream()
+                .map(Cartas::getValue)
+                .collect(Collectors.joining(","));
+
+        Vencedores vencedorConvertido = new Vencedores(vencedorDTO.getNomeVencedor(), vencedorDTO.getSomaCartas(), cartas);
+        Vencedores vencedorSalvo = vencedoresRepository.save(vencedorConvertido);
+
+        vencedorDTO.setId(vencedorSalvo.getId());
+    }
 }

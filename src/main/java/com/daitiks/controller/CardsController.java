@@ -3,7 +3,7 @@ package com.daitiks.controller;
 
 
 import com.daitiks.dto.VencedoresDTO;
-import com.daitiks.service.CardService;
+import com.daitiks.service.CartaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +16,10 @@ import java.util.List;
 public class CardsController {
 
     @Autowired
-    private CardService cardService;
+    private CartaService cartaService;
 
     @GetMapping
     public List<VencedoresDTO> realizarJogada(){
-        return cardService.realizarJogada();
+        return cartaService.realizarJogada();
     }
 }

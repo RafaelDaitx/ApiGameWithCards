@@ -14,10 +14,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-
 class ResultadoServiceTest {
+
     @Autowired
     private ResultadoService resultadoService;
+
     @Test
     void vencedorDaRodada() {
         List<JogadaDTO> jogadas = new ArrayList<>();

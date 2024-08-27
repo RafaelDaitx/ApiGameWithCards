@@ -1,7 +1,7 @@
 package com.daitiks;
 
 import com.daitiks.dto.VencedoresDTO;
-import com.daitiks.service.CardService;
+import com.daitiks.service.CartaService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class IntegracaoService {
 
     @Autowired
-    private CardService cardService1;
+    private CartaService cartaService1;
     @Test
     public void testarChamadaAPICard2() {
-        List<VencedoresDTO> testeIntegracao = cardService1.realizarJogada();
+        List<VencedoresDTO> testeIntegracao = cartaService1.realizarJogada();
 
         //Significa que deve ter feito a lógica, e retornado um vecedor :)
         assertNotNull(testeIntegracao);
