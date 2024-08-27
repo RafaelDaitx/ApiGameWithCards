@@ -8,6 +8,9 @@ atualizei para uma versão recente. Estou empolgado para junto com você, escrev
 
 
 ***Criar um banco de dados MySQL com o nome "Cartas", faltou uma certa criatividade :)
+
+URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas
+
 O desafio consiste em criar um baralho (utilizando a API disponível no fim do arquivo) e montar quatro “mãos” com 5 cartas cada uma, verificando qual “mão” tem a maior somatória.
 
 Se houver empate, retornar só os vencedores empatados.
