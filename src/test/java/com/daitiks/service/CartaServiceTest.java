@@ -46,7 +46,7 @@ class CartaServiceTest {
 
         cartaService.salvarVencedor(vencedoresDTO);
         var dadosBuscadosDoBancp = vencedoresRepository.findById(vencedoresDTO.getId());
-        // Verifica se o ID foi corretamente setado
+
         assertNotNull(dadosBuscadosDoBancp.get().getNome_vencedor());
         assertNotNull(dadosBuscadosDoBancp.get().getSoma_cartas());
         assertNotNull(dadosBuscadosDoBancp.get().getValor_carta());
