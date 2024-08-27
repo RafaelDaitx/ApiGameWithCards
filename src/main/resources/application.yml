@@ -3,7 +3,7 @@ spring:
     name: testForKoerich
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cardstable?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/cartas?useTimezone=true&serverTimezone=UTC
     username: root
     password: admin
   jpa:
