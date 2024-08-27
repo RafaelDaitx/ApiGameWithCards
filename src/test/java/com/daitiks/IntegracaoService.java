@@ -25,6 +25,7 @@ public class IntegracaoService {
         CartaDtoApi response = cardApiClient.criaDeckCartas();
 
         assertNotNull(response.getCards());
+        assertNotNull(response.getCards().get(0).getValue());
         assertEquals(25, response.getCards().size());
     }
 }
