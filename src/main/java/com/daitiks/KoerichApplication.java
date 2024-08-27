@@ -9,10 +9,10 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 @SpringBootApplication
 @EnableFeignClients
 @ImportAutoConfiguration ({FeignAutoConfiguration.class})
-public class TesforKoerichApplication {
+public class KoerichApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TesforKoerichApplication.class, args);
+		SpringApplication.run(KoerichApplication.class, args);
 	}
 
 }
