@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cartas")
-public class CardsController {
+public class CartaController {
 
     @Autowired
     private CartaService cartaService;

@@ -8,14 +8,13 @@ import com.daitiks.dto.VencedoresDTO;
 import com.daitiks.entity.Vencedores;
 import com.daitiks.mapper.JogadoresMapper;
 import com.daitiks.model.Cartas;
-import com.daitiks.repository.VencedoresRepository;
 import com.daitiks.repository.JogadoresRepository;
+import com.daitiks.repository.VencedoresRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -107,6 +106,7 @@ public class CartaService {
     }
 
     public void salvarVencedor(VencedoresDTO vencedorDTO) {
+        logger.info("Salvando Vencedor!");
         String cartas = vencedorDTO.getCartasDoJogador().stream()
                 .map(Cartas::getValue)
                 .collect(Collectors.joining(","));

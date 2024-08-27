@@ -11,6 +11,4 @@ import lombok.Setter;
 @Setter
 public class Cartas {
     private String value;
-    // Getters and Setters
-
-}
+  }

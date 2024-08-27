@@ -4,22 +4,15 @@ import com.daitiks.client.CardApiClient;
 import com.daitiks.dto.JogadaDTO;
 import com.daitiks.dto.JogadoresDTO;
 import com.daitiks.dto.VencedoresDTO;
-import com.daitiks.entity.Jogadores;
-import com.daitiks.entity.Vencedores;
 import com.daitiks.model.Cartas;
-import com.daitiks.repository.JogadoresRepository;
 import com.daitiks.repository.VencedoresRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class CartaServiceTest {

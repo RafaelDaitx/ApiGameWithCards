@@ -47,7 +47,6 @@ public class ResultadoService {
             }
         }
         return vencedores;
-
     }
 
     public int calcularSomaDasCartas(JogadaDTO jogadaDTO){
