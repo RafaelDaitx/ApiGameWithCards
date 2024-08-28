@@ -13,6 +13,14 @@ URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas </br>
 Url para busar todos os vencedores: http://localhost:8080/api/cartas/vencedores </br>
 Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201 </br>
 
+Deixo também um Front que fiz usando React, não fiz os commits pois não tinha certeza se finalizaria a tempo de você revisar, esse é o Link: </br>
+https://github.com/RafaelDaitx/front_desafio_Cartas </br>
+Imagem em produção local (não é necessário rodar para o teste com Spring, mas fica um "plus" do solicitado) </br>
+![Screenshot 2024-08-28 155146](https://github.com/user-attachments/assets/b3c4f6d6-6066-418b-beda-55ddcf4ec3de)
+
+
+Esotu adicionando você também ao repositório, pois deixei privado.
+
 O desafio consiste em criar um baralho (utilizando a API disponível no fim do arquivo) e montar quatro “mãos” com 5 cartas cada uma, verificando qual “mão” tem a maior somatória.
 
 Se houver empate, retornar só os vencedores empatados.
