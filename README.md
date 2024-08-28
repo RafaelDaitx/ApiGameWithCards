@@ -10,16 +10,47 @@ atualizei para uma versão recente. Estou empolgado para junto com você, escrev
 ***Criar um banco de dados MySQL com o nome "Cartas", faltou uma certa criatividade :)
 
 URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas </br>
+Resultado: </br>
+[
+    {
+        "id": 70,
+        "nomeVencedor": "Jogador 4",
+        "valorCartas": "7,11,6,8,12",
+        "somaCartas": 44
+    },
+] </br>
+</br>
 Url para busar todos os vencedores: http://localhost:8080/api/cartas/vencedores </br>
+Resultado: </br>
+[
+    {
+        "id": 70,
+        "nomeVencedor": "Jogador 4",
+        "valorCartas": "7,11,6,8,12",
+        "somaCartas": 44
+    },
+     "id": 71,
+        "nomeVencedor": "Jogador 1",
+        "valorCartas": "7,11,6,8,11",
+        "somaCartas": 43
+    },
+] </br></br>
 Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201 </br>
+Resultado: </br>
+[
+    {
+        "id": 71,
+        "nomeVencedor": "Jogador 1",
+        "valorCartas": "8,6,12,11,7",
+        "somaCartas": 44
+    }
+] </br></br>
 
 Deixo também um Front que fiz usando React, não fiz os commits pois não tinha certeza se finalizaria a tempo de você revisar, esse é o Link: </br>
-https://github.com/RafaelDaitx/front_desafio_Cartas </br>
-Imagem em produção local (não é necessário rodar para o teste com Spring, mas fica um "plus" do solicitado) </br>
+https://github.com/RafaelDaitx/front_desafio_Cartas </br></br>
+Imagem em produção local (não é necessário rodar para o teste com Spring, mas fica um "plus" do solicitado). Estou adicionando você também ao repositório, pois deixei privado. </br>
 ![Screenshot 2024-08-28 155146](https://github.com/user-attachments/assets/b3c4f6d6-6066-418b-beda-55ddcf4ec3de)
-
-
-Esotu adicionando você também ao repositório, pois deixei privado.
+</br></br></br>
 
 O desafio consiste em criar um baralho (utilizando a API disponível no fim do arquivo) e montar quatro “mãos” com 5 cartas cada uma, verificando qual “mão” tem a maior somatória.
 
