@@ -21,7 +21,7 @@ public class VencedoresService {
         return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll());
     }
 
-    public List<VencedoresDTO> findByName() {
-        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll());
+    public List<VencedoresDTO> findByName(String nome) {
+        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findByNomeVencedor(nome));
     }
 }
