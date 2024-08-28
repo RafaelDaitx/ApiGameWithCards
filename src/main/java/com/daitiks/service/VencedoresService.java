@@ -19,20 +19,9 @@ public class VencedoresService {
 
     public List<VencedoresDTO> findAll() {
         return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll());
-//        logger.info("Procuradno todos os jogadores!");
-//    List<VencedoresDTO> vencedoresDTO = new ArrayList<>();
-//        List<Vencedores>  vencedoresBuscados = (List<Vencedores>) vencedoresRepository.findAll();
-//
-//        for (int i = 0; i < vencedoresBuscados.size(); i++) {
-//            Vencedores entity = vencedoresBuscados.get(i);
-//            VencedoresDTO dto = new VencedoresDTO();
-//
-//            dto.setNomeVencedor(entity.getNomeVencedor());
-//            dto.setCartasDoJogador(entity.getValorCartas());
-//            // Mapear outros campos conforme necessário
-//
-//            vencedoresDTO.add(dto);
-//        }
+    }
 
+    public List<VencedoresDTO> findByName() {
+        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll());
     }
 }

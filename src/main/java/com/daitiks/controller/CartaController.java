@@ -78,4 +78,9 @@ public class CartaController {
     public List<VencedoresDTO> findAll(){
         return vecedoresService.findAll();
     }
+
+    @GetMapping("/vencedores")
+    public List<VencedoresDTO> findVencedorByName(){
+        return vecedoresService.findByName();
+    }
 }
