@@ -9,6 +9,5 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("http://localhost:3000");
-        //Estou fazendo um front Simples, por isso desta classe
     }
 }
