@@ -6,6 +6,7 @@ import com.daitiks.repository.VencedoresRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +19,10 @@ public class VencedoresService {
     private VencedoresRepository vencedoresRepository;
 
     public List<VencedoresDTO> findAll() {
-        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll());
+        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
     }
 
     public List<VencedoresDTO> findByName(String nome) {
-        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findByNomeVencedor(nome));
+        return VencedoresMapper.INSTANCE.convertFromVencedoresToVencedoresDto(vencedoresRepository.findByNomeVencedorOrderByIdDesc(nome));
     }
 }

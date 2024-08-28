@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface VencedoresRepository extends JpaRepository<Vencedores, Long> {
 
-    List<Vencedores> findByNomeVencedor(String nomeVencedor);
+    List<Vencedores> findByNomeVencedorOrderByIdDesc(String nomeVencedor);
 }
