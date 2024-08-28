@@ -9,9 +9,9 @@ atualizei para uma versão recente. Estou empolgado para junto com você, escrev
 
 ***Criar um banco de dados MySQL com o nome "Cartas", faltou uma certa criatividade :)
 
-URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas
-Url para busar todos os vencedores: http://localhost:8080/api/cartas/vencedores
-Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201
+URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas </br>
+Url para busar todos os vencedores: http://localhost:8080/api/cartas/vencedores </br>
+Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201s </br>
 
 O desafio consiste em criar um baralho (utilizando a API disponível no fim do arquivo) e montar quatro “mãos” com 5 cartas cada uma, verificando qual “mão” tem a maior somatória.
 
