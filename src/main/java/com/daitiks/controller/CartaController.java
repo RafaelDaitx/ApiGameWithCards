@@ -2,7 +2,9 @@ package com.daitiks.controller;
 
 import com.daitiks.client.response.CartaDtoApi;
 import com.daitiks.dto.VencedoresDTO;
+import com.daitiks.entity.Vencedores;
 import com.daitiks.service.CartaService;
+import com.daitiks.service.VencedoresService;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,6 +28,9 @@ public class CartaController {
 
     @Autowired
     private CartaService cartaService;
+
+    @Autowired
+    private VencedoresService vecedoresService;
 
     @GetMapping
     @Operation(
@@ -66,5 +71,11 @@ public class CartaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Collections.emptyList());
         }
+    }
+
+
+    @GetMapping("/vencedores")
+    public List<VencedoresDTO> findAll(){
+        return vecedoresService.findAll();
     }
 }

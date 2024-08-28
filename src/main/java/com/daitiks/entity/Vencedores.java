@@ -19,17 +19,17 @@ public class Vencedores {
     private Long id;
 
     @Column(name = "nome_vencedor")
-    private String nome_vencedor;
+    private String nomeVencedor;
 
     @Column(name = "soma_cartas")
-    private Integer soma_cartas;
+    private Integer somaCartas;
 
     @Column(name = "valor_carta")
-    private String valor_carta;
+    private String valorCartas;
 
-    public Vencedores(String nomeVencedor, int somaCartas, String cartas) {
-        this.nome_vencedor = nomeVencedor;
-        this.soma_cartas = somaCartas;
-        this.valor_carta = cartas;
+    public Vencedores(String nomeVencedor, int somaCartas, String valorCartas) {
+        this.nomeVencedor = nomeVencedor;
+        this.somaCartas = somaCartas;
+        this.valorCartas = valorCartas;
     }
 }

@@ -33,16 +33,16 @@ class CartaServiceTest {
         VencedoresDTO vencedoresDTO = new VencedoresDTO(
                 teste.get(0).getId(),
                 teste.get(0).getNomeVencedor(),
-                teste.get(0).getCartasDoJogador(),
+                teste.get(0).getValorCartas(),
                 teste.get(0).getSomaCartas()
         );
 
         cartaService.salvarVencedor(vencedoresDTO);
         var dadosBuscadosDoBancp = vencedoresRepository.findById(vencedoresDTO.getId());
 
-        assertNotNull(dadosBuscadosDoBancp.get().getNome_vencedor());
-        assertNotNull(dadosBuscadosDoBancp.get().getSoma_cartas());
-        assertNotNull(dadosBuscadosDoBancp.get().getValor_carta());
+        assertNotNull(dadosBuscadosDoBancp.get().getNomeVencedor());
+        assertNotNull(dadosBuscadosDoBancp.get().getSomaCartas());
+        assertNotNull(dadosBuscadosDoBancp.get().getValorCartas());
     }
 
     @Test
@@ -64,7 +64,7 @@ class CartaServiceTest {
 
         assertNotNull(teste.get(0).getNomeVencedor());
         assertNotNull(teste.get(0).getSomaCartas());
-        assertNotNull(teste.get(0).getCartasDoJogador());
+        assertNotNull(teste.get(0).getValorCartas());
 
         assertTrue(teste.get(0).getSomaCartas() > 0);
     }

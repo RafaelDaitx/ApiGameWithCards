@@ -1,8 +1,9 @@
 package com.daitiks.repository;
 
 import com.daitiks.entity.Vencedores;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VencedoresRepository extends CrudRepository<Vencedores, Long> {}
+public interface VencedoresRepository extends JpaRepository<Vencedores, Long> {}

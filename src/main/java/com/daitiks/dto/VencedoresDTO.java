@@ -1,12 +1,9 @@
 package com.daitiks.dto;
 
-import com.daitiks.model.Cartas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +13,6 @@ public class VencedoresDTO {
 
     private Long id;
     private String nomeVencedor;
-    private List<Cartas> cartasDoJogador;
-    private int somaCartas;
+    private String valorCartas;
+    private Integer somaCartas;
 }

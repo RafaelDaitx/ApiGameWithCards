@@ -13,8 +13,4 @@ public interface JogadoresMapper {
     JogadoresMapper INSTANCE = Mappers.getMapper(JogadoresMapper.class);
 
     List<JogadoresDTO> convertFromJogadoresToDto(Iterable<Jogadores> jogadores);
-
-    List<Vencedores> convertFromVencedoresDtoToVencedores(List<VencedoresDTO> vencedores);
-
-    Vencedores convertFromEntityToDto(VencedoresDTO vencedor);
 }

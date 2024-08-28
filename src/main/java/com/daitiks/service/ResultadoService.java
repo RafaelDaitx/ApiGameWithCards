@@ -2,12 +2,14 @@ package com.daitiks.service;
 
 import com.daitiks.dto.JogadaDTO;
 import com.daitiks.dto.VencedoresDTO;
+import com.daitiks.model.Cartas;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ResultadoService {
@@ -57,8 +59,13 @@ public class ResultadoService {
 
     public void adicionarVencedores(List<VencedoresDTO> vencedores, JogadaDTO jogada, int somaCartas){
         VencedoresDTO vencedoresDTO = new VencedoresDTO();
+
+        String cartas = jogada.getCartasNaMao().stream()
+                .map(Cartas::getValue)
+                .collect(Collectors.joining(","));
+
         vencedoresDTO.setNomeVencedor(jogada.getNomeJogador());
-        vencedoresDTO.setCartasDoJogador(jogada.getCartasNaMao());
+        vencedoresDTO.setValorCartas(cartas);
         vencedoresDTO.setSomaCartas(somaCartas);
         vencedores.add(vencedoresDTO);
     }

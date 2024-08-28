@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CartaService {
@@ -107,13 +106,12 @@ public class CartaService {
 
     public void salvarVencedor(VencedoresDTO vencedorDTO) {
         logger.info("Salvando Vencedor!");
-        String cartas = vencedorDTO.getCartasDoJogador().stream()
-                .map(Cartas::getValue)
-                .collect(Collectors.joining(","));
+        String cartas = vencedorDTO.getValorCartas();
 
         Vencedores vencedorConvertido = new Vencedores(vencedorDTO.getNomeVencedor(), vencedorDTO.getSomaCartas(), cartas);
         Vencedores vencedorSalvo = vencedoresRepository.save(vencedorConvertido);
 
         vencedorDTO.setId(vencedorSalvo.getId());
     }
+
 }
