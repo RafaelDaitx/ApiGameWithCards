@@ -11,7 +11,7 @@ atualizei para uma versão recente. Estou empolgado para junto com você, escrev
 
 URL de requisição (utilizei o Postman): http://localhost:8080/api/cartas </br>
 Url para busar todos os vencedores: http://localhost:8080/api/cartas/vencedores </br>
-Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201s </br>
+Url para buscar pelo jogador vencedor http://localhost:8080/api/cartas/vencedores/Jogador%201 </br>
 
 O desafio consiste em criar um baralho (utilizando a API disponível no fim do arquivo) e montar quatro “mãos” com 5 cartas cada uma, verificando qual “mão” tem a maior somatória.
 
