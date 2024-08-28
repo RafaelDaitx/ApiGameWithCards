@@ -61,9 +61,11 @@ public class ResultadoService {
         VencedoresDTO vencedoresDTO = new VencedoresDTO();
 
         String cartas = jogada.getCartasNaMao().stream()
-                .map(Cartas::getValue)
+                .map(carta -> {
+                    String value = carta.getValue();
+                    return valorDasCartas.getOrDefault(value, 0).toString();
+                })
                 .collect(Collectors.joining(","));
-
         vencedoresDTO.setNomeVencedor(jogada.getNomeJogador());
         vencedoresDTO.setValorCartas(cartas);
         vencedoresDTO.setSomaCartas(somaCartas);
