@@ -63,5 +63,5 @@ Resultado: </br>
 ] </br></br>
 
 Deixo também um Front que fiz usando React, não fiz os commits pois não tinha certeza se finalizaria a tempo de você revisar, esse é o Link: </br>
-https://github.com/RafaelDaitx/front_desafio_Cartas </br></br>
+[https://github.com/RafaelDaitx/front_desafio_Cartas](https://github.com/RafaelDaitx/frontend_cards_api_game) </br></br>
 
