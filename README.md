@@ -64,6 +64,4 @@ Resultado: </br>
 
 Deixo também um Front que fiz usando React, não fiz os commits pois não tinha certeza se finalizaria a tempo de você revisar, esse é o Link: </br>
 https://github.com/RafaelDaitx/front_desafio_Cartas </br></br>
-Imagem em produção local 
-![Screenshot 2024-08-28 155146](https://github.com/user-attachments/assets/b3c4f6d6-6066-418b-beda-55ddcf4ec3de)
-</br></br></br>
+
